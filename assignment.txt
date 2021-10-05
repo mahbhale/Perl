@@ -1,0 +1,90 @@
+#!/bin/perl
+$option = $ARGV[0];chomp($option);
+if($option eq "-a")
+    {
+      my $fname = $ARGV[1];chomp($fname);
+      open($b,"<$fname") or die "No file found\n";
+      if (-r $b)
+          {
+            if(-z ne $b)
+              {
+                while(<$b>)
+                 {
+                   my @p = split(" ",$_);
+                   print "$p[3]\n";
+                 }
+              }
+            else
+              {
+                print "No command!!\n";
+              }
+          }
+      else
+          {
+           print " Make the file readable!!\n";
+          }
+   }
+elsif($option eq "-t")
+   {
+     my $fname = $ARGV[1];chomp($fname);
+     open($b,"<$fname") or die "No file found\n";
+     if (-r $b)
+       {
+         if(-z ne $b)
+           {
+             while(<$b>)
+              {
+                my @q = split(" ",$_);
+                print "$q[1]\n";
+              }
+           }
+         else
+           }
+            print "No Terminal\n";
+           }
+        }
+     else
+       {
+        print "Make the file readable\n";
+       }
+   }
+elsif($option eq "-s")
+    {
+      my $threshold=$ARGV[1];chomp($threshold);
+      my $fname=$ARGV[2];chomp($fname);
+      open(my $b,"<$fname") or die "No file found \n";
+      if(-r $b)
+        {
+          if(-z ne $b)
+            {
+              while(<$b>)
+                {
+                  my @r = split(" ",$_);
+                  if($r[2] ge $threshold)
+                     {
+                       print "$_\n";
+                     }
+                }
+             }
+          else
+             {
+              print "No processes above threshold\n";
+             }
+        }
+      else
+        {
+         print "Make the file readable\n";
+        }
+   }
+elsif($option eq "-n")
+    {
+        print "Name :- Mahesh\n";
+        print "Surname:- Bhalerao\n";
+        print "Student ID:- 13306790\n";
+        print "Compled Date:- 08 Oct 2019\n";
+   }
+else
+  {
+    print "Please ensure the right option is provided\n";
+  }
+
